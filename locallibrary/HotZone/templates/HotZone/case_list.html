@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h1>Case List</h1>
+    {% if case_list %}
+    <ul>
+      {% for case in case_list %}
+      <li>
+        <p>{{case.caseNumber}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no case record.</p>
+    {% endif %}
+{% endblock %}

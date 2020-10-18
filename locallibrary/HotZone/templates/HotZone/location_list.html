@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h1>Location List</h1>
+    {% if location_list %}
+    <ul>
+      {% for location in location_list %}
+      <li>
+        <p>{{location.Address}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no location record.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h1>Virus List</h1>
+    {% if virus_list %}
+    <ul>
+      {% for virus in virus_list %}
+      <li>
+        <p>{{virus.name}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no virus record.</p>
+    {% endif %}
+{% endblock %}

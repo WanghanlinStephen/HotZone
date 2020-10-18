@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>HotZone Data Center</title>
+{% endblock %}
+
+{% block content %}
+<h1>HotZone Data Center</h1>
+
+  <p>Welcome to <em>HotZone</em>, a  website developed to help track virus information</p>
+<h2>Dynamic content</h2>
+
+  <p>The data center has the following record counts:</p>
+  <ul>
+    <li><strong>Patient:</strong> {{ num_patient }}</li>
+    <li><strong>Case:</strong> {{ num_case }}</li>
+    <li><strong>Location:</strong> {{ num_location }}</li>
+    <li><strong>Virus:</strong> {{ num_virus }}</li>
+  </ul>
+
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+
+
+{% endblock %}

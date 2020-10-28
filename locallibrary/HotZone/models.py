@@ -49,8 +49,8 @@ class Location(models.Model):
     Address= models.CharField(max_length=200)
     XCoordinate= models.IntegerField()
     YCoordinate= models.IntegerField()
-    DateFrom= models.DateTimeField(max_length=100)
-    DateTo= models.DateTimeField(max_length=100)
+    DateFrom= models.DateTimeField(max_length=100,null=True, blank=True)
+    DateTo= models.DateTimeField(max_length=100,null=True, blank=True)
     Category= forms.ChoiceField(choices = Type_CHOICES)
     def __str__(self):
         """

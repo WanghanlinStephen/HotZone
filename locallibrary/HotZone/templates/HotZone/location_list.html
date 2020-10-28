@@ -6,6 +6,8 @@
       {% for location in location_list %}
       <li>
         <p>{{location.Address}}</p>
+        <p>{{location.Location}}</p>
+        <p>({{location.XCoordinate}},{{location.YCoordinate}})</p>
       </li>
       {% endfor %}
     </ul>

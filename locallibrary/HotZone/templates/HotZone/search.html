@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h2>Location Search</h2>
+    <form action="{% url 'searchItem' %}" method="GET">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i>Search</i></button>
+    </form>
+{% endblock %}
+

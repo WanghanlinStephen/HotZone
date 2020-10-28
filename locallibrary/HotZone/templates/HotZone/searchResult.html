@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Search Result</h1>
+    <ul>
+      {% for value in Array %}
+      <p><a href="{% url 'addLocation' %}?index={{value}}">Add to the data center</a></p>
+      <li>
+        <p>Address:{{value.addressEN}}</p>
+        <p>Location:{{value.nameEN}}</p>
+        <p>Coordinate:({{value.x}},{{value.y}})</p>
+        <p>-----------------------------------</p>
+        <p></p>
+      </li>
+      {% endfor %}
+    </ul>
+    
+{% endblock %}

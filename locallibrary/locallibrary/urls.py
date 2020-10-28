@@ -21,13 +21,16 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
-
-
 urlpatterns += [
     path('HotZone/', include('HotZone.urls')),
 ]
 urlpatterns += [
     path('', RedirectView.as_view(url='/HotZone/')),
+]
+
+#Add Django site authentication urls (for login, logout, password management)
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 # urlpatterns += [
 #     path('accounts/', include('django.contrib.auth.urls')),

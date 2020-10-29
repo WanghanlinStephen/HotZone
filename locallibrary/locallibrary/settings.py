@@ -26,8 +26,7 @@ SECRET_KEY = '9xp^!6fly0yjov!x9pj6+(#)0lny46e8ol@4^^@vwo30%jfqke'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['https://salty-lake-39293.herokuapp.com/', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -49,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'locallibrary.urls'
@@ -119,7 +119,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 STATIC_URL = '/static/'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'

@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '9xp^!6fly0yjov!x9pj6+(#)0lny46e8ol@4^^@vwo30%jfqke'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://salty-lake-39293.herokuapp.com/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['salty-lake-39293.herokuapp.com/', 'localhost', '127.0.0.1']
 
 # Application definition
 

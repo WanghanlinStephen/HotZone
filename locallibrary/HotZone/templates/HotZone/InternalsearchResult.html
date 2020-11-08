@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Internal Search Result</h1>
+    <ul>
+      {% for value in Array %}
+      <li>
+        <p>Address:{{value.Address}}</p>
+        <p>Location:{{value.Location}}</p>
+        <p>Coordinate:({{value.XCoordinate}},{{value.YCoordinate}})</p>
+        <p>-----------------------------------</p>
+        <p></p>
+      </li>
+      {% endfor %}
+    </ul>
+    
+{% endblock %}

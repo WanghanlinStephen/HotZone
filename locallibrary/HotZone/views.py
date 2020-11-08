@@ -44,21 +44,31 @@ def search(request):
 def searchItem(request):
     if(request.method=='GET'):
         search= request.GET.get('search')
-        #post= Location.objects().all().filter(Location=search)
-        url='https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q='+search
-        response = requests.get(url=url,headers={'Content-Type': 'application/json'})
-        if response.status_code == 200:
-            Array=json.loads(response.text)
-            return render(
-                request,
-                'HotZone/searchResult.html',
-                {'Array': Array}
-            )
+        content= Location.objects.all().filter(Location=search)
+        if(content):
+            context = {
+            "Array" : content,
+            }
+            return render(request, 'HotZone/InternalsearchResult.html', context)
         else:
-            return render(
-                request,
-                'HotZone/searchError.html',
-            )
+            url='https://geodata.gov.hk/gs/api/v1.0.0/locationSearch?q='+search
+            response = requests.get(url=url,headers={'Content-Type': 'application/json'})
+            if response.status_code == 200:
+                Array=json.loads(response.text)
+                return render(
+                    request,
+                    'HotZone/searchResult.html',
+                    {'Array': Array}
+                )
+            else:
+                return render(
+                    request,
+                    'HotZone/searchError.html',
+                )
+           
+            
+        
+        
 
 @login_required
 def AddLocation(request):

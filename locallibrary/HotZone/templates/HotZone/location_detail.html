@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Location: {{ location.name }}</h1>
+<div style="margin-left:20px;margin-top:20px">
+    <li>
+        <p>{{location.Address}}</p>
+        <p>{{location.Location}}</p>
+        <p>({{location.XCoordinate}},{{location.YCoordinate}})</p>
+      </li>
+</div>
+
+{% endblock %}

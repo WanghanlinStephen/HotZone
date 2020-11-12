@@ -5,7 +5,7 @@
     <ul>
       {% for patient in patient_list %}
       <li>
-        <p>{{patient.Name}}</p>
+        <a href="{{patient.get_absolute_url}}">{{ patient.Name }}</a>
       </li>
       {% endfor %}
     </ul>

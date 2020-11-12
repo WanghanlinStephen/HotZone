@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Visit: {{ visit.id }}</h1>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Visit Data:</h4>
+    {% for location in visit.location_set.all %}
+    <p><strong>Location Number:</strong> <a href="{% url 'location-detail' location.id %}">{{ location.Address }}</a></p>
+    {% endfor %}
+</div>
+
+{% endblock %}

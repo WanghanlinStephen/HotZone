@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render
-from .models import Virus,Patient,Case,Location
+from .models import Virus,Patient,Case,Location,Visit
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -95,18 +95,45 @@ class VirusListView(LoginRequiredMixin,generic.ListView):
     model = Virus
     paginate_by = 10
 
+class VirusDetailView(generic.DetailView):
+    """Generic class-based detail view for a book."""
+    model = Virus
+
 
 class PatientListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view for a list of books."""
     model = Patient
     paginate_by = 10
 
+class PatientDetailView(generic.DetailView):
+    """Generic class-based detail view for a book."""
+    model = Patient
+
 class CaseListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view for a list of books."""
     model = Case
     paginate_by = 10
 
+class CaseDetailView(generic.DetailView):
+    """Generic class-based detail view for a book."""
+    model = Case
+
 class LocationListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view for a list of books."""
     model = Location
     paginate_by = 10
+
+
+class LocationDetailView(generic.DetailView):
+    """Generic class-based detail view for a book."""
+    model = Location
+
+class VisitListView(LoginRequiredMixin,generic.ListView):
+    """Generic class-based view for a list of books."""
+    model = Visit
+    paginate_by = 10
+
+
+class VisitDetailView(generic.DetailView):
+    """Generic class-based detail view for a book."""
+    model = Visit

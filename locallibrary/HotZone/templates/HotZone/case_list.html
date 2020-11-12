@@ -6,6 +6,7 @@
       {% for case in case_list %}
       <li>
         <p>{{case.caseNumber}}</p>
+        <a href="{{case.get_absolute_url}}">{{case.caseNumber}}</a>
       </li>
       {% endfor %}
     </ul>

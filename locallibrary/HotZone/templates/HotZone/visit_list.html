@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h1>Visit List</h1>
+    {% if visit_list %}
+    <ul>
+      {% for visit in visit_list %}
+      <li>
+        <a href="{{visit.get_absolute_url}}">{{visit.id}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no location record.</p>
+    {% endif %}
+{% endblock %}

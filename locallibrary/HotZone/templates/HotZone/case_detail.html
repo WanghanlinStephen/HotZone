@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Case: {{ case.name }}</h1>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Patient Data:</h4>
+    {% for patient in case.patient_set.all %}
+    <p><strong>Patient Name:</strong> <a href="{% url 'patient-detail' patient.id %}">{{ patient.Name }}</a></p>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -5,7 +5,7 @@
     <ul>
       {% for virus in virus_list %}
       <li>
-        <p>{{virus.name}}</p>
+        <a href="{{virus.get_absolute_url}}">{{ virus.name }}</a>
       </li>
       {% endfor %}
     </ul>

@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms 
+from django.urls import reverse  
 
 Location_CHOICES =( 
     ("Local"), 
@@ -18,7 +19,10 @@ class Virus(models.Model):
     id= models.CharField(max_length=200,primary_key=True)
     name= models.CharField(max_length=200,null=True)
     dateofBrith=models.DateTimeField(max_length=100,null=True)
-    
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('virus-detail', args=[str(self.id)])
 
     def __str__(self):
         """
@@ -26,30 +30,52 @@ class Virus(models.Model):
         """
         return self.name
 
-class Patient(models.Model):
-    id= models.CharField(max_length=200,primary_key=True)
-    Name= models.CharField(max_length=200)
-    DateofBrith=models.DateTimeField(max_length=100)
-    def __str__(self):
-        """
-        String for representing the Model object (in Admin site etc.)
-        """
-        return self.Name
 
 class Case(models.Model):
+    id= models.CharField(max_length=200,primary_key=True)
     caseNumber= models.IntegerField()
     date= models.DateTimeField(max_length=100,help_text="Enter the date of infecious")
     category= forms.ChoiceField(choices = Location_CHOICES)
     Virus= models.ForeignKey(Virus,on_delete=models.CASCADE, null=True)
-    Patient=models.ForeignKey(Patient,on_delete=models.CASCADE, null=True)
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('case-detail', args=[str(self.id)])
+    
     def __str__(self):
         """
         String for representing the Model object (in Admin site etc.)
         """
         return 'CaseNumber:%s' % (self.caseNumber)
 
+
+class Patient(models.Model):
+    id= models.CharField(max_length=200,primary_key=True)
+    Name= models.CharField(max_length=200)
+    DateofBrith=models.DateTimeField(max_length=100)
+    Case=models.ForeignKey(Case,on_delete=models.CASCADE, null=True)
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('patient-detail', args=[str(self.id)])
+
+    def __str__(self):
+        """
+        String for representing the Model object (in Admin site etc.)
+        """
+        return self.Name
+
 class Visit(models.Model):
+    id= models.CharField(max_length=200,primary_key=True)
     Patient= models.ForeignKey(Patient,on_delete=models.CASCADE, null=True)
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('visit-detail', args=[str(self.id)])
+    def __str__(self):
+        """
+        String for representing the Model object (in Admin site etc.)
+        """
+        return self.id
 
 class Location(models.Model):
     Location= models.CharField(max_length=200)
@@ -60,6 +86,11 @@ class Location(models.Model):
     DateTo= models.DateTimeField(max_length=100,null=True, blank=True)
     Category= forms.ChoiceField(choices = Type_CHOICES)
     Visit= models.ForeignKey(Visit,on_delete=models.CASCADE, null=True)
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular book instance."""
+        return reverse('location-detail', args=[str(self.id)])
+
     def __str__(self):
         """
         String for representing the Model object (in Admin site etc.)

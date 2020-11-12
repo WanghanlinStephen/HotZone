@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Patient: {{ patient.Name }}</h1>
+
+
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Visit Data:</h4>
+    {% for visit in patient.visit_set.all %}
+    <p><strong>Visit Info:</strong> <a href="{% url 'visit-detail' visit.id %}">{{ visit.id }}</a></p>
+    <!-- {% for location in visit.location_set.all %}
+    <p><strong>Location Info: {{ forloop.counter }} </strong></p>
+    <p><strong>Location:</strong> {{ location.Location }}</a></p>
+    <p><strong>Address:</strong> {{ location.Address }}</p>
+    <p><strong>XCoordinate:</strong> {{ location.XCoordinate}}</p>
+    <p><strong>YCoordinate:</strong> {{ location.YCoordinate}}</p>
+    <p><strong>DateFrom:</strong> {{ location.DateFrom}}</p>
+    <p><strong>DateTo:</strong> {{ location.DateTo }}</p>
+    <p><strong>Category:</strong> {{ location.Category }}</p>
+    {% endfor %} -->
+
+
+    {% endfor %}
+</div>
+
+{% endblock %}

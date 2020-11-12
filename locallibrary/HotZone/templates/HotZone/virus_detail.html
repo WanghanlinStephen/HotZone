@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Virus: {{ virus.name }}</h1>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Case Data:</h4>
+    {% for case in virus.case_set.all %}
+    <p><strong>Case Number:</strong> <a href="{% url 'case-detail' case.id %}">{{ case.caseNumber }}</a></p>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -7,7 +7,7 @@
       <li>
         <p>{{location.Address}}</p>
         <p>{{location.Location}}</p>
-        <p>({{location.XCoordinate}},{{location.YCoordinate}})</p>
+        <a href="{{location.get_absolute_url}}">find Detail</a>
       </li>
       {% endfor %}
     </ul>

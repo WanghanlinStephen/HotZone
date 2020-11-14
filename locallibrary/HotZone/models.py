@@ -97,3 +97,15 @@ class Location(models.Model):
         """
         return self.Location
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username=models.CharField(max_length=200)
+    password=models.CharField(max_length=200)
+    staff_number=models.IntegerField()
+    first_name=models.CharField(max_length=200)
+    last_name=models.CharField(max_length=200)
+    email=models.EmailField(max_length=254)
+
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

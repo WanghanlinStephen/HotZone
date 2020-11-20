@@ -26,8 +26,8 @@ SECRET_KEY = '@3zje7@wn^evtjdes+1vi3aq_#98n2qh8!!g_)y%begj)mztty'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['hotzonesprint2.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'locallibrary.urls'
@@ -134,3 +135,5 @@ STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")
 
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))

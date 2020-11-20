@@ -8,6 +8,7 @@ distlib==0.3.1
 dj-database-url==0.5.0
 Django==3.1.2
 django-environ==0.4.5
+django-password-reset==2.0
 django-simpleui==2020.9.26
 environs==8.0.0
 filelock==3.0.12
@@ -38,4 +39,5 @@ virtualenv-clone==0.5.4
 virtualenvwrapper==4.8.4
 whitenoise==5.2.0
 wrapt==1.12.1
+yum==0.0.1
 zipp==3.4.0

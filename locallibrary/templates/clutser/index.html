@@ -1,0 +1,71 @@
+{#{% extends "admin/base_site.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#{% endblock %}#}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-3" style="padding-top: 20px;">
+            <div>
+                <form action="" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">Search</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="Location">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="date-picker" class="col-sm-3 control-label">Date</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="date-picker">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-success btn-lg">Cluster</button>
+                    </div>
+                </form>
+            </div>
+            <script>
+                $('#date-picker').datepicker({
+                    language: 'en'
+                });
+            </script>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <h3 class="text-center">Patient</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
+                    <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
+                    <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
+                    <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
+                    <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
+                    <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div style="background-color: antiquewhite; height: 500px;"></div>
+            <div class="text-center">
+                Virus name:xxxx  Case Number: xxxx
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error'%}danger{% else %}{{ message.tags }}{% endif %}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+        <div class="col-md-4">
+            <div class="avatar-area text-center">
+                {% if account.avatar %}
+                    <div>
+                        <img src="/media/{{ account.avatar }}" alt="" class="img-thumbnail">
+                    </div>
+                    <div>
+                        <button data-toggle="modal" data-target="#avatarModal" type="button" class="btn btn-primary">edit</button>
+                    </div>
+                    {% else %}
+                        <button data-toggle="modal" data-target="#avatarModal" type="button" class="btn btn-primary">upload avatar</button>
+                {% endif %}
+            </div>
+            <br>
+            <div class="text-center">
+                <h1>{{ request.user.username }}</h1>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <h3>Department</h3>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    {{ account.department  }} <span class="pull-right"><a href="#" class="edit" data-value="{{ account.department  }}" data-key="department">edit</a></span>
+                  </div>
+                </div>
+            </div>
+            <div>
+                <h3>Address</h3>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    {{ account.province  }} <span class="pull-right"><a href="#" class="edit" data-key="province">edit</a></span>
+                  </div>
+                <div class="panel-body">
+                    {{ account.city  }} <span class="pull-right"><a href="#" class="edit" data-key="city">edit</a></span>
+                  </div>
+                    <div class="panel-body">
+                    {{ account.area  }} <span class="pull-right"><a href="#" class="edit" data-key="area">edit</a></span>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <h3>Phone Number</h3>
+                <div class="panel panel-default">
+                    <div class="panel-header">
+                        HOME
+                    </div>
+                  <div class="panel-body">
+                    {{ account.home_phone  }} <span class="pull-right"><a href="#" class="edit" data-key="home_phone">edit</a></span>
+                  </div>
+                    <div class="panel-header">
+                        WORK
+                    </div>
+                <div class="panel-body">
+                    {{ account.work_phone  }} <span class="pull-right"><a href="#" class="edit" data-key="work_phone">edit</a></span>
+                  </div>
+                </div>
+            </div>
+            <div>
+                <h3>Email Address</h3>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    {{ account.user.email  }} <span class="pull-right"><a href="#" class="edit" data-key="user__email">edit</a></span>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="other-area">
+        <!-- Modal -->
+        <div class="modal fade" id="avatarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <form action="/update_avatar/" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload Image</h4>
+              </div>
+              <div class="modal-body">
+                  <input type="hidden" name="aid" value="{{ account.id }}">
+                  {% csrf_token %}
+                  <input type="file" class="form-control" name="image">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="txtModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <form action="/update_account/" method="post">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Data - <span id="title-updated-key"></span></h4>
+              </div>
+              <div class="modal-body">
+                  <input type="hidden" name="aid" value="{{ account.id }}">
+                  {% csrf_token %}
+                  <input type="hidden" name="key" id="updated-key" value="">
+                  <input type="text" class="form-control" name="value" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+    <script>
+        $(function(){
+            $('a.edit').click(function(){
+                var key = $(this).data('key');
+                $('#updated-key').val(key);
+                $('#title-updated-key').text(key);
+                $('#txtModal').modal()
+            });
+        });
+    </script>
+
+</body>
+</html>

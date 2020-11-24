@@ -93,20 +93,20 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#  'default': {
-#  'ENGINE': 'django.db.backends.postgresql',
-#  'NAME': 'hotzone2',
-#  'USER': 'stephen',
-#  'PASSWORD': 'Wsq809327698',
-#  'HOST': 'localhost',
-#  'PORT': '',
-#  }
-# }
-
 DATABASES = {
- 'default': env.dj_db_url('DATABASE_URL')
+ 'default': {
+ 'ENGINE': 'django.db.backends.postgresql',
+ 'NAME': 'hotzone2',
+ 'USER': 'stephen',
+ 'PASSWORD': 'Wsq809327698',
+ 'HOST': 'localhost',
+ 'PORT': '',
+ }
 }
+
+# DATABASES = {
+#  'default': env.dj_db_url('DATABASE_URL')
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

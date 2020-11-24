@@ -22,32 +22,43 @@
     <div class="row" style="padding-top: 10px;">
         <div class="col-md-3" style="padding-top: 20px;">
             <div>
-                <form action="" class="form-horizontal">
+                <!-- 条件选择 -->
+                <form action="/data/" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-3 control-label">Search</label>
+                        <label for="inputEmail3" class="col-sm-3 control-label">Distance</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="Location">
+                        <input type="text" name="distance" class="form-control" id="inputEmail3" placeholder="Proximity Criterion">
                         </div>
-
                     </div>
+
                     <div class="form-group">
-                        <label for="date-picker" class="col-sm-3 control-label">Date</label>
+                        <label for="date-picker" class="col-sm-3 control-label">Time</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="date-picker">
+                        <input type="text" name="time" class="form-control" id="date-picker" placeholder="Period Criterion">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date-picker" class="col-sm-3 control-label">Number</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="number" class="form-control" id="date-picker" placeholder="Number Criterion">
                         </div>
                     </div>
                     <div class="form-group text-center">
                         <button class="btn btn-success btn-lg">Cluster</button>
                     </div>
                 </form>
+
             </div>
-            <script>
-                $('#date-picker').datepicker({
-                    language: 'en'
-                });
-            </script>
+<!--            <script>-->
+<!--                $('#date-picker').datepicker({-->
+<!--                    language: 'en'-->
+<!--                });-->
+<!--            </script>-->
         </div>
-        <div class="col-md-3">
+
+        <!-- <div class="col-md-3">
             <div>
                 <h3 class="text-center">Patient</h3>
                 <ul class="list-group">
@@ -59,7 +70,8 @@
                     <li class="list-group-item"><a href="">1</a><span class="badge"> > </span></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
+
         <div class="col-md-6">
             <div style="background-color: antiquewhite; height: 500px;"></div>
             <div class="text-center">

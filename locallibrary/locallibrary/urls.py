@@ -19,6 +19,7 @@ from django.urls import path
 from visit.views import *
 from locallibrary import settings
 from account.views import *
+from cluster.views import *
 
 urlpatterns = [
     path('', admin.site.urls),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('add_api/<int:lid>', add_api),
     path('update_avatar/', upload_img, name='upload_img'),
     path('update_account/', update_txt),
+    path('data/', clusterInfo),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL) # 配置静态资源的路径
 

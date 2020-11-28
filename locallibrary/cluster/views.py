@@ -72,8 +72,14 @@ def clusterInfo(request):
             print(mylist)
     npArray=np.array(mylist)
     print(npArray.shape)
-    cluster(npArray,distance,time,number)
-    return render(request, 'clutser/index.html')
+    result = cluster(npArray,distance,time,number)
+    context = {
+        "result": result,
+        "distance": distance,
+        "time": time,
+        "number": number
+    }
+    return render(request, 'clutser/index.html', context)
 
 
 
@@ -106,6 +112,8 @@ def cluster(vector_4d, distance, time, minimum_cluster):
 
     print("Total un-clustered:", total_noise)
 
+    result = ClusterInfo(total_clusters, total_noise)
+
     for k in unique_labels:
         if k != -1:
 
@@ -113,8 +121,31 @@ def cluster(vector_4d, distance, time, minimum_cluster):
             cluster_k = vector_4d[labels_k]
 
             print("Cluster", k, " size:", len(cluster_k))
-
+            inner = ClusterInner(k, len(cluster_k))
             for pt in cluster_k:
                 print("(x:{}, y:{}, day:{}, caseNo:{})".format(pt[0], pt[1], pt[2], pt[3]))
-
+                inner.add_data("(x:{}, y:{}, day:{}, caseNo:{})".format(pt[0], pt[1], pt[2], pt[3]))
+            result.add_cluster(inner)
             print()
+
+    return result
+
+
+class ClusterInfo(object):
+    def __init__(self, total_clusters, total_un_clustered):
+        self.total_clusters = total_clusters
+        self.total_un_clustered = total_un_clustered
+        self.clusters = []
+
+    def add_cluster(self, cluster_data):
+        self.clusters.append(cluster_data)
+
+
+class ClusterInner(object):
+    def __init__(self, name, size):
+        self.name = name
+        self.size = size
+        self.data = []
+
+    def add_data(self, data):
+        self.data.append(data)

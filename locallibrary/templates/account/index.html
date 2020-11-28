@@ -13,6 +13,7 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
 </head>
 <body>
+  <h1>My Account</h1>
     <div class="container">
         {% if messages %}
         {% for message in messages %}
@@ -23,19 +24,21 @@
         <div class="col-md-4">
             <div class="avatar-area text-center">
                 {% if account.avatar %}
-                    <div>
+                    <div>\
                         <img src="/media/{{ account.avatar }}" alt="" class="img-thumbnail">
                     </div>
                     <div>
                         <button data-toggle="modal" data-target="#avatarModal" type="button" class="btn btn-primary">edit</button>
                     </div>
                     {% else %}
+                    <div>
                         <button data-toggle="modal" data-target="#avatarModal" type="button" class="btn btn-primary">upload avatar</button>
+                    </div>
                 {% endif %}
             </div>
             <br>
             <div class="text-center">
-                <h1>{{ request.user.username }}</h1>
+                <h3>Username: {{ request.user.username }}</h3>
             </div>
         </div>
         <div class="col-md-4">
@@ -50,14 +53,23 @@
             <div>
                 <h3>Address</h3>
                 <div class="panel panel-default">
+                  <div class="panel-header">
+                    PROVINCE
+                  </div>
                   <div class="panel-body">
-                    {{ account.province  }} <span class="pull-right"><a href="#" class="edit" data-key="province">edit</a></span>
+                    {{ account.province  }} <span class="pull-right"><a href="#" class="edit" data-key="Province">edit</a></span>
+                  </div>
+                  <div class="panel-header">
+                    CITY
                   </div>
                 <div class="panel-body">
-                    {{ account.city  }} <span class="pull-right"><a href="#" class="edit" data-key="city">edit</a></span>
+                    {{ account.city  }} <span class="pull-right"><a href="#" class="edit" data-key="City">edit</a></span>
+                  </div>
+                  <div class="panel-header">
+                    AREA
                   </div>
                     <div class="panel-body">
-                    {{ account.area  }} <span class="pull-right"><a href="#" class="edit" data-key="area">edit</a></span>
+                    {{ account.area  }} <span class="pull-right"><a href="#" class="edit" data-key="Area">edit</a></span>
                   </div>
                 </div>
             </div>

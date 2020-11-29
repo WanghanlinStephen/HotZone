@@ -104,7 +104,6 @@ WSGI_APPLICATION = 'locallibrary.wsgi.application'
 #  }
 # }
 
-
 DATABASES = {
  'default': env.dj_db_url('DATABASE_URL')
 }

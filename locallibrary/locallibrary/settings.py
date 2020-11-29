@@ -30,7 +30,7 @@ SECRET_KEY = '@3zje7@wn^evtjdes+1vi3aq_#98n2qh8!!g_)y%begj)mztty'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['hotzonesprint2.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['hotzone3.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 

@@ -48,10 +48,10 @@ def clusterInfo(request):
 
     patientVisits=PatientVisit.objects.all()
     for patientVisit in patientVisits:
-        item=[]
         patientInfo=patientVisit.patient
         visitLocationInfo=patientVisit.visitlocation_set.all()
         for visitLocationItem in visitLocationInfo:
+            item=[]
             visitInfo=visitLocationItem.visit
             locationInfo=visitLocationItem.location
             x=str(locationInfo.x)

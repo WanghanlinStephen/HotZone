@@ -9,3 +9,4 @@ build
 # My configurations:
 test
 .*
+.DS_Store

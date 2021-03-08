@@ -10,3 +10,4 @@ build
 test
 .*
 .DS_Store
+./locallibrary/.idea
